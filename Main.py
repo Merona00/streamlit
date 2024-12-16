@@ -3,6 +3,22 @@ import pandas as pd
 import plotly.express as px
 import json
 
+
+import subprocess
+import sys
+
+# 설치할 패키지 목록
+required_packages = ['plotly', 'pandas', 'altair']
+
+# 패키지 설치
+for package in required_packages:
+    try:
+        __import__(package)
+    except ImportError:
+        print(f"'{package}' 패키지가 없습니다. 설치 중...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+
 # 페이지 설정
 st.set_page_config(
     page_title="대한민국 인구 통계 대시보드",
